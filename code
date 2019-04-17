@@ -1,0 +1,11 @@
+# code
+
+# Testing
+
+curl -X POST -u "apikey:{your_api_key}" --form "images_file=test2/1.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
+
+# Threshold of 0.88
+
+curl -X POST -u "apikey:{your_api_key}" --form "images_file=test2/1.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19&threshold=0.75"
+
+
