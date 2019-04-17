@@ -1,2 +1,2 @@
-# Sleeping_Car_Driver_Detection
-A Watson (IBM) App aiming at detecting car drivers falling asleep 
+# Shark_Detection
+A Watson (IBM) App aiming at detecting sharks next to the beach 
