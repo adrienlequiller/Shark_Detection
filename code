@@ -1,11 +1,38 @@
 # code
 
-# Testing
+# 1. Testing and classifier from command line 
 
-curl -X POST -u "apikey:{your_api_key}" --form "images_file=test2/1.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
+# Testing (from repo test_final)
+
+curl -X POST -u "apikey:{your_api_key}" --form "images_file=@1.jpg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
 
 # Threshold of 0.88
 
-curl -X POST -u "apikey:{your_api_key}" --form "images_file=test2/1.jpeg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19&threshold=0.75"
+curl -X POST -u "apikey:{your_api_key}" --form "images_file=@1.jpg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19&threshold=0.88"
+
+# Classifier
+
+ curl -X POST -u "apikey:{your_api_key}" --form "classifier_ids=shark" --form "images_file=@1.jpg" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
+
+
+# 2. Creating custom model from command line 
+
+
+curl -X POST -u "apikey:{your_api_key}" --form "{shak}_positive_examples=@{shark.zip}" --form "negative_examples=@{not_shark.zip}" --form "name={Shark_detection_model_121372538}" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classifiers?version=2018-03-19"
+
+# creating from data
+
+curl -X POST -u "apikey:{your_api_key}" --form "Shark=@shark.zip" --form "negative_examples=@not_shark.zip" --form "name=Shark_detection_model_121372538" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classifiers?version=2018-03-19"
+
+# checking 
+
+curl -X GET -u "apikey:{your_api_key}" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classifiers/{Shark_detection_model_121372538}?version=2018-03-19"
+
+# classifying with a custom image (from data/test_final)
+
+curl -X POST -u "apikey:{your_api_key}" --form "images_file=@1.jpg" --form "classifier_ids={Shark_detection_model_121372538}" "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19"
+
+
+
 
 
