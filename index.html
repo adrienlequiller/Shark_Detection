@@ -1,23 +1,31 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 <body>
 
     <H3>Shark detector</H3>
     <H4>Keep Calm & Take a sunbath</H4>
     <input id="picture" type="file" accept="image/*;capture=camera">
     <div id="results"></div>
-    
+
     <script>
         var formData = new FormData();
         var myInput = document.getElementById('picture');
-        
+
         function sendPic() {
-            var request = new XMLHttpRequest();  
-            var file = myInput.files[0];   
+            var request = new XMLHttpRequest();
+            var file = myInput.files[0];
             formData.set("photo", file);
             // Display results
             request.onreadystatechange = function() {
                 console.log(this);
-                if (this.readyState == 4 && this.status == 200) {                    
+                if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("results").innerHTML = this.response;
                 }
             };
@@ -28,7 +36,7 @@
         // Listener on picture selection
         myInput.addEventListener('change', sendPic, false);
     </script>
-    
+
 </body>
 </HTML>
 
