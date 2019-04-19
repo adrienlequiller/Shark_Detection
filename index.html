@@ -1,0 +1,37 @@
+<html>
+<body>
+
+    <H3>Shark detector</H3>
+    <H4>Keep Calm & Take a sunbath</H4>
+    <input id="picture" type="file" accept="image/*;capture=camera">
+    <div id="results"></div>
+    
+    <script>
+        var formData = new FormData();
+        var myInput = document.getElementById('picture');
+        
+        function sendPic() {
+            var request = new XMLHttpRequest();  
+            var file = myInput.files[0];   
+            formData.set("photo", file);
+            // Display results
+            request.onreadystatechange = function() {
+                console.log(this);
+                if (this.readyState == 4 && this.status == 200) {                    
+                    document.getElementById("results").innerHTML = this.response;
+                }
+            };
+            // Sending picture to IBM Cloud
+            request.open("POST", "/submit");
+            request.send(formData);
+        }
+        // Listener on picture selection
+        myInput.addEventListener('change', sendPic, false);
+    </script>
+    
+</body>
+</HTML>
+
+
+
+
